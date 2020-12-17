@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringCalculatorTest {
 
-   static StringCalculator stringCalculator;
+    static StringCalculator stringCalculator;
 
     @BeforeAll
     static void initTests() {
@@ -20,16 +19,15 @@ class StringCalculatorTest {
     }
 
     @Test
-    void addTwoStringsNumbersReturnsAddition() {
+    void addTwoStringsNumbersReturnsSum() {
         String result = stringCalculator.add("1.1,2.2");
         assertEquals("3.3", result);
     }
 
     @Test
-    void addThreeStringsNumbersReturnsException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringCalculator.add("1,1,1");
-        });
+    void addManyStringsNumbersReturnsSum() {
+        String result = stringCalculator.add("1.1,2.2,3.3,4.4,5.5");
+        assertEquals("16.5", result);
     }
 
     @Test

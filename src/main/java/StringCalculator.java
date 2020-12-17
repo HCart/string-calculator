@@ -6,7 +6,7 @@ public class StringCalculator {
 
     DecimalFormat df;
 
-    StringCalculator(){
+    StringCalculator() {
         DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
         formatSymbols.setDecimalSeparator('.');
         df = new DecimalFormat();
@@ -15,11 +15,6 @@ public class StringCalculator {
 
     public String add(String number) {
         String[] numbers = number.split(",");
-
-        if (numbers.length > 2) {
-            //not clear about exceptions
-            throw new IllegalArgumentException("Too many arguments (0, 1 or 2 accepted");
-        }
 
         return df.format(Stream.of(numbers).mapToDouble(this::mapString).sum());
     }
