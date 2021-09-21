@@ -30,3 +30,6 @@ Pour réaliser ce kata j'ai tenté de pratiquer le TDD, explications :
     Suppression du test qui n'est plus utile
     Refacto du code : on enlève le check du nombre d'arguments
     => test vert
+
+Bénéfices: 
+100% coverage, seuls le code nécessaire est écrit, facilité de maintenance et réfacto (après l'exemple est simple..)
