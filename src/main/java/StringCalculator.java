@@ -1,28 +1,19 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.stream.Stream;
+import java.math.BigDecimal;
 
 public class StringCalculator {
 
-    DecimalFormat df;
+    public static final String NUMBER_SEPARATOR = ",";
+    public static final String EMPTY_NUMBER = "0";
 
-    StringCalculator() {
-        DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
-        formatSymbols.setDecimalSeparator('.');
-        df = new DecimalFormat();
-        df.setDecimalFormatSymbols(formatSymbols);
-    }
-
-    public String add(String number) {
-        String[] numbers = number.split(",");
-
-        return df.format(Stream.of(numbers).mapToDouble(this::mapString).sum());
-    }
-
-    private Double mapString(String string) {
-        if (string.isEmpty()) {
-            return 0d;
+    public String add(String stringNumber) {
+        if(stringNumber.isEmpty()) {
+            return EMPTY_NUMBER;
         }
-        return Double.parseDouble(string);
+
+        BigDecimal sum = BigDecimal.ZERO;
+        for(String number : stringNumber.split(NUMBER_SEPARATOR)) {
+            sum = sum.add(new BigDecimal(number));
+        }
+        return sum.toString();
     }
 }
